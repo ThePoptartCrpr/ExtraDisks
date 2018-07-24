@@ -1,0 +1,16 @@
+[
+{
+  "modid": "extradisks",
+  "name": "Extra Disks",
+  "description": "Good old ExtraCells2 for Refined Storage - adds the 256k, 1024k, 4096k, and 16384k storage disks to Refined Storage.",
+  "version": "0.1",
+  "mcversion": "1.12.2",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["ThePoptartCrpr"],
+  "credits": "The ExtraCells2 team, for making the original mod.",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
