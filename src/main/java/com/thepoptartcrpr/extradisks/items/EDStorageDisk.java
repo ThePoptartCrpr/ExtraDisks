@@ -1,17 +1,24 @@
 package com.thepoptartcrpr.extradisks.items;
 
+import com.raoulvdberge.refinedstorage.RSItems;
 import com.raoulvdberge.refinedstorage.api.storage.disk.IStorageDisk;
 import com.raoulvdberge.refinedstorage.api.storage.disk.IStorageDiskProvider;
 import com.raoulvdberge.refinedstorage.api.storage.disk.IStorageDiskSyncData;
 import com.raoulvdberge.refinedstorage.api.storage.disk.StorageDiskType;
 import com.thepoptartcrpr.extradisks.api.RSApiHelper;
+import com.thepoptartcrpr.extradisks.init.EDItems;
 import com.thepoptartcrpr.extradisks.types.StorageTypes;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
 
@@ -58,6 +65,29 @@ public class EDStorageDisk extends EDItem implements IStorageDiskProvider {
 
             if (data != null) tooltip.add(I18n.format("misc.refinedstorage:storage.stored_capacity", RSApiHelper.api.getQuantityFormatter().format(data.getStored()), RSApiHelper.api.getQuantityFormatter().format(data.getCapacity())));
         }
+    }
+
+    @Override
+    public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+        ItemStack heldItem = player.getHeldItem(hand);
+
+        if (!world.isRemote) {
+            if (player.isSneaking()) {
+                IStorageDisk disk = RSApiHelper.api.getStorageDiskManager(world).getByStack(heldItem);
+
+                if (disk != null && disk.getStored() == 0) {
+                    ItemStack part = new ItemStack(EDItems.storagePart, heldItem.getCount(), heldItem.getMetadata());
+
+                    if (!player.inventory.addItemStackToInventory(part.copy())) InventoryHelper.spawnItemStack(world, player.getPosition().getX(), player.getPosition().getY(), player.getPosition().getZ(), part);
+                }
+
+                RSApiHelper.api.getStorageDiskManager(world).remove(this.getId(heldItem));
+                RSApiHelper.api.getStorageDiskManager(world).markForSaving();
+
+                return new ActionResult<>(EnumActionResult.SUCCESS, new ItemStack(RSItems.STORAGE_HOUSING));
+            }
+        }
+        return new ActionResult<>(EnumActionResult.PASS, heldItem);
     }
 
     @Override
