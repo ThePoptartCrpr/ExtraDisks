@@ -60,8 +60,7 @@ public class EDStorageDisk extends EDItem implements IStorageDiskProvider {
 
             if (data == null) return;
 
-            if (data.getCapacity() == -1) tooltip.add(I18n.format("misc.refinedstorage:storage.stored", RSApiHelper.api.getQuantityFormatter().format(data.getStored())));
-            else tooltip.add(I18n.format("misc.refinedstorage:storage.stored_capacity", RSApiHelper.api.getQuantityFormatter().format(data.getStored()), RSApiHelper.api.getQuantityFormatter().format(data.getCapacity())));
+            tooltip.add(I18n.format("misc.refinedstorage:storage.stored_capacity", RSApiHelper.api.getQuantityFormatter().format(data.getStored()), RSApiHelper.api.getQuantityFormatter().format(data.getCapacity())));
         }
     }
 
