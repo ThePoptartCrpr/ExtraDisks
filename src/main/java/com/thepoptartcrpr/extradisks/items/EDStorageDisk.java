@@ -9,10 +9,12 @@ import com.thepoptartcrpr.extradisks.api.RSApiHelper;
 import com.thepoptartcrpr.extradisks.types.StorageType;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
@@ -27,6 +29,7 @@ public class EDStorageDisk extends Item implements IStorageDiskProvider {
 
         this.setMaxStackSize(1);
         this.setMaxDamage(1);
+        this.setHasSubtypes(true);
 
         this.setUnlocalizedName("storage_disk");
         this.setRegistryName(new ResourceLocation(ExtraDisks.Reference.MODID, "storage_disk"));
@@ -90,6 +93,21 @@ public class EDStorageDisk extends Item implements IStorageDiskProvider {
     @Override
     public StorageDiskType getType() {
         return StorageDiskType.ITEM;
+    }
+
+    @Override
+    public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> list) {
+        for (int i = 0; i < StorageType.values().length; i++) {
+            list.add(new ItemStack(this, 1, i));
+        }
+    }
+
+    @Override
+    public String getUnlocalizedName(ItemStack stack) {
+        for (int i = 0; i < StorageType.values().length; i++) {
+            if (stack.getItemDamage() == i) return this.getUnlocalizedName() + "." + StorageType.values()[i].getName();
+        }
+        return null;
     }
 
 }
