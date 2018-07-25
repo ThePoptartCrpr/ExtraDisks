@@ -107,7 +107,7 @@ public class EDStorageDisk extends Item implements IStorageDiskProvider {
     @Override
     public String getUnlocalizedName(ItemStack stack) {
         for (int i = 0; i < StorageType.values().length; i++) {
-            if (stack.getItemDamage() == i) return this.getUnlocalizedName() + "." + StorageType.values()[i].getName();
+            if (stack.getItemDamage() == i) return this.getUnlocalizedName() + "." + StorageType.values()[i].getId();
         }
         return null;
     }
