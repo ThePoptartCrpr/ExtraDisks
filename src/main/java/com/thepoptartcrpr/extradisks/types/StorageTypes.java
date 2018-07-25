@@ -4,7 +4,10 @@ import net.minecraft.util.IStringSerializable;
 
 public enum StorageTypes implements IStringSerializable {
 
-    TYPE_256K(0, 256_000, "256k");
+    TYPE_256K(0, 256_000, "256k"),
+    TYPE_1024K(1, 1_024_000, "1024k"),
+    TYPE_4096K(2, 4_096_000, "4096k"),
+    TYPE_16384K(3, 16_384_000, "16384k");
 
     private int id;
     private int capacity;
