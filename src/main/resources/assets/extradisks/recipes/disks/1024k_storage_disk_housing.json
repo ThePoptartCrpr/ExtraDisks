@@ -1,0 +1,16 @@
+{
+  "result": {
+    "item": "extradisks:storage_disk",
+    "data": 1
+  },
+  "ingredients": [
+    {
+      "item": "refinedstorage:storage_housing"
+    },
+    {
+      "item": "extradisks:storage_part",
+      "data": 1
+    }
+  ],
+  "type": "minecraft:crafting_shapeless"
+}

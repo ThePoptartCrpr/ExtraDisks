@@ -1,0 +1,28 @@
+{
+  "result": {
+    "item": "extradisks:storage_disk",
+    "data": 1
+  },
+  "pattern": [
+    "GRG",
+    "RSR",
+    "III"
+  ],
+  "key": {
+    "G": {
+      "ore": "blockGlass",
+      "type": "forge:ore_dict"
+    },
+    "R": {
+      "item": "minecraft:redstone"
+    },
+    "S": {
+      "item": "extradisks:storage_part",
+      "data": 1
+    },
+    "I": {
+      "item": "refinedstorage:quartz_enriched_iron"
+    }
+  },
+  "type": "minecraft:crafting_shaped"
+}

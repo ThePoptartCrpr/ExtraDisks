@@ -1,0 +1,28 @@
+{
+  "result": {
+    "item": "extradisks:storage_part",
+    "data": 3
+  },
+  "pattern": [
+    "PIP",
+    "SRS",
+    "PSP"
+  ],
+  "key": {
+    "P": {
+      "item": "refinedstorage:processor",
+      "data": 5
+    },
+    "I": {
+      "item": "refinedstorage:quartz_enriched_iron"
+    },
+    "S": {
+      "item": "extradisks:storage_part",
+      "data": 2
+    },
+    "R": {
+      "item": "minecraft:redstone"
+    }
+  },
+  "type": "minecraft:crafting_shaped"
+}
