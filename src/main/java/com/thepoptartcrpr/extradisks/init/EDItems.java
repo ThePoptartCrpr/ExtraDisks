@@ -2,6 +2,7 @@ package com.thepoptartcrpr.extradisks.init;
 
 import com.raoulvdberge.refinedstorage.RS;
 import com.thepoptartcrpr.extradisks.items.EDStorageDisk;
+import com.thepoptartcrpr.extradisks.types.StorageTypes;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.event.ModelRegistryEvent;
@@ -22,7 +23,9 @@ public class EDItems {
 
     @SubscribeEvent
     public void registerRenders(ModelRegistryEvent event) {
-        ModelLoader.setCustomModelResourceLocation(storageDisk, 0, new ModelResourceLocation(storageDisk.getRegistryName(), "inventory"));
+        for (int i = 0; i < StorageTypes.values().length; i++ ) {
+            ModelLoader.setCustomModelResourceLocation(storageDisk, i, new ModelResourceLocation(storageDisk.getRegistryName() + "_" + StorageTypes.values()[i].getId(), "inventory"));
+        }
     }
 
 }
