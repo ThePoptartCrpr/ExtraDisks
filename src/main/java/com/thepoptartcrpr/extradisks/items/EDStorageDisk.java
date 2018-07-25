@@ -56,10 +56,13 @@ public class EDStorageDisk extends EDItem implements IStorageDiskProvider {
             RSApiHelper.api.getStorageDiskSync().sendRequest(id);
             IStorageDiskSyncData data = RSApiHelper.api.getStorageDiskSync().getData(id);
 
-            if (data == null) return;
-
-            tooltip.add(I18n.format("misc.refinedstorage:storage.stored_capacity", RSApiHelper.api.getQuantityFormatter().format(data.getStored()), RSApiHelper.api.getQuantityFormatter().format(data.getCapacity())));
+            if (data != null) tooltip.add(I18n.format("misc.refinedstorage:storage.stored_capacity", RSApiHelper.api.getQuantityFormatter().format(data.getStored()), RSApiHelper.api.getQuantityFormatter().format(data.getCapacity())));
         }
+    }
+
+    @Override
+    public int getEntityLifespan(ItemStack stack, World world) {
+        return Integer.MAX_VALUE;
     }
 
     @Override
