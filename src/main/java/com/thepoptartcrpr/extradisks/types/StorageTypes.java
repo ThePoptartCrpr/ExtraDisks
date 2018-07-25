@@ -2,7 +2,7 @@ package com.thepoptartcrpr.extradisks.types;
 
 import net.minecraft.util.IStringSerializable;
 
-public enum StorageType implements IStringSerializable {
+public enum StorageTypes implements IStringSerializable {
 
     TYPE_256K(0, 256_000, "256k");
 
@@ -10,7 +10,7 @@ public enum StorageType implements IStringSerializable {
     private int capacity;
     private String name;
 
-    StorageType(int id, int capacity, String name) {
+    StorageTypes(int id, int capacity, String name) {
         this.id = id;
         this.capacity = capacity;
         this.name = name;
@@ -34,8 +34,8 @@ public enum StorageType implements IStringSerializable {
         return this.name;
     }
 
-    public static StorageType getById(int id) {
-        for (StorageType type : StorageType.values()) {
+    public static StorageTypes getById(int id) {
+        for (StorageTypes type : StorageTypes.values()) {
             if (type.getId() == id) {
                 return type;
             }

@@ -6,12 +6,11 @@ import com.raoulvdberge.refinedstorage.api.storage.disk.IStorageDiskSyncData;
 import com.raoulvdberge.refinedstorage.api.storage.disk.StorageDiskType;
 import com.thepoptartcrpr.extradisks.ExtraDisks;
 import com.thepoptartcrpr.extradisks.api.RSApiHelper;
-import com.thepoptartcrpr.extradisks.types.StorageType;
+import com.thepoptartcrpr.extradisks.types.StorageTypes;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.NonNullList;
@@ -22,17 +21,14 @@ import javax.annotation.Nullable;
 import java.util.List;
 import java.util.UUID;
 
-public class EDStorageDisk extends Item implements IStorageDiskProvider {
+public class EDStorageDisk extends EDItem implements IStorageDiskProvider {
 
     public EDStorageDisk() {
-        super();
+        super("storage_disk");
 
         this.setMaxStackSize(1);
         this.setMaxDamage(1);
         this.setHasSubtypes(true);
-
-        this.setUnlocalizedName("storage_disk");
-        this.setRegistryName(new ResourceLocation(ExtraDisks.Reference.MODID, "storage_disk"));
     }
 
     @Override
@@ -76,7 +72,7 @@ public class EDStorageDisk extends Item implements IStorageDiskProvider {
 
     @Override
     public int getCapacity(ItemStack disk) {
-        return StorageType.getById(disk.getItemDamage()).getCapacity();
+        return StorageTypes.getById(disk.getItemDamage()).getCapacity();
     }
 
     @Override
@@ -99,15 +95,15 @@ public class EDStorageDisk extends Item implements IStorageDiskProvider {
     public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> list) {
         if (!this.isInCreativeTab(tab)) return;
 
-        for (int i = 0; i < StorageType.values().length; i++) {
+        for (int i = 0; i < StorageTypes.values().length; i++) {
             list.add(new ItemStack(this, 1, i));
         }
     }
 
     @Override
     public String getUnlocalizedName(ItemStack stack) {
-        for (int i = 0; i < StorageType.values().length; i++) {
-            if (stack.getItemDamage() == i) return this.getUnlocalizedName() + "." + StorageType.values()[i].getId();
+        for (int i = 0; i < StorageTypes.values().length; i++) {
+            if (stack.getItemDamage() == i) return this.getUnlocalizedName() + "." + StorageTypes.values()[i].getId();
         }
         return null;
     }
