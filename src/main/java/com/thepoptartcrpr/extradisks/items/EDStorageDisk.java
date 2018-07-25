@@ -27,7 +27,7 @@ public class EDStorageDisk extends EDItem implements IStorageDiskProvider {
         super("storage_disk");
 
         this.setMaxStackSize(1);
-        this.setMaxDamage(1);
+        this.setMaxDamage(0);
         this.setHasSubtypes(true);
     }
 
