@@ -4,7 +4,6 @@ import com.raoulvdberge.refinedstorage.api.storage.disk.IStorageDisk;
 import com.raoulvdberge.refinedstorage.api.storage.disk.IStorageDiskProvider;
 import com.raoulvdberge.refinedstorage.api.storage.disk.IStorageDiskSyncData;
 import com.raoulvdberge.refinedstorage.api.storage.disk.StorageDiskType;
-import com.thepoptartcrpr.extradisks.ExtraDisks;
 import com.thepoptartcrpr.extradisks.api.RSApiHelper;
 import com.thepoptartcrpr.extradisks.types.StorageTypes;
 import net.minecraft.client.resources.I18n;
@@ -14,7 +13,6 @@ import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.NonNullList;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
