@@ -24,7 +24,7 @@ public class EDItems {
     @SubscribeEvent
     public void registerRenders(ModelRegistryEvent event) {
         for (int i = 0; i < StorageTypes.values().length; i++ ) {
-            ModelLoader.setCustomModelResourceLocation(storageDisk, i, new ModelResourceLocation(storageDisk.getRegistryName() + "_" + StorageTypes.values()[i].getId(), "inventory"));
+            ModelLoader.setCustomModelResourceLocation(storageDisk, i, new ModelResourceLocation(storageDisk.getRegistryName() + "_" + i, "inventory"));
         }
     }
 
