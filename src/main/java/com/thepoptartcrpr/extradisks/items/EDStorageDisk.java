@@ -97,6 +97,8 @@ public class EDStorageDisk extends Item implements IStorageDiskProvider {
 
     @Override
     public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> list) {
+        if (!this.isInCreativeTab(tab)) return;
+
         for (int i = 0; i < StorageType.values().length; i++) {
             list.add(new ItemStack(this, 1, i));
         }
